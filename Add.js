@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { StatusBar, View, Button, Text, TextInput, Alert } from 'react-native';
+import { StatusBar, View, Button, Text, TextInput } from 'react-native';
 
 const Add = ({navigation, route}) => {
   const[name,setName] = useState("");
@@ -14,11 +14,11 @@ const Add = ({navigation, route}) => {
           let myData = JSON.parse(route.params.datastr);
           let item = {name:name};
           myData.push(item);
-          fetch("https://jsonhost.com/json/3c8ea95bb0f0a27afaf17496650efb56", {
+          fetch("https://jsonhost.com/json/70b3d4545b40510d6ea9fca63e2cdc84", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
-                  "Authorization": "kddwvpe1w2xsy7rcx9c36voreuoqszwh"
+                  "Authorization": "f08lnjceas4pddfqhgo69vwcamelgprm"
               },
               body: JSON.stringify(myData)
           })

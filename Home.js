@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import {StatusBar, Button, FlatList, StyleSheet, Text, View, TextInput} from 'react-native';
+import {StatusBar, Button, FlatList, StyleSheet, Text, View} from 'react-native';
 
 const styles = StyleSheet.create({
    listStyle: {
@@ -7,38 +7,19 @@ const styles = StyleSheet.create({
    },
 });
 
-let originalData = [];
 const Home = ({navigation}) => {
     const [myData, setMyData] = useState([]);
-
-
     useEffect(() => {
-        fetch("https://jsonhost.com/json/3c8ea95bb0f0a27afaf17496650efb56")
+        fetch("https://jsonhost.com/json/70b3d4545b40510d6ea9fca63e2cdc84")
             .then((response) => {
                 return response.json();
             })
             .then((myJson) => {
-                console.log("line 19:");
-                console.log(myJson);
-
-                    setMyData(myJson);
-                    originalData = myJson;
-
+                setMyData(myJson)
             })
     }, []);
 
-  const FilterData = (text) => {
-      if (text != "") {
-          let filteredData = originalData.filter((item) =>
-              item.name.includes(text));
-          setMyData(filteredData);
-      }
-      else {
-          setMyData(originalData);
-      }
-  }
-
-  const renderItem = ({item, index, section}) => {
+  const renderItem = ({item}) => {
     return (
     <View style={styles.listStyle}>
     <Text>{item.name}</Text>
@@ -51,8 +32,6 @@ const Home = ({navigation}) => {
       <StatusBar/>
 	  <Button title='Add Item' onPress={
       ()=>{navigation.navigate("Add",{datastr:JSON.stringify(myData)})}}/>
-      <Text>Search:</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={(text) => {FilterData(text)}}/>
       <FlatList data={myData} renderItem={renderItem}/>
     </View>
   );
