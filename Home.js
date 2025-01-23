@@ -10,16 +10,20 @@ const styles = StyleSheet.create({
 let originalData = [];
 const Home = ({navigation}) => {
     const [myData, setMyData] = useState([]);
+
+
     useEffect(() => {
-        fetch("https://jsonhost.com/json/b1b17a7b4ace82611b0e47da6dc8d0e9")
+        fetch("https://jsonhost.com/json/3c8ea95bb0f0a27afaf17496650efb56")
             .then((response) => {
                 return response.json();
             })
             .then((myJson) => {
-                if (originalData.length === 0) {
-                    setMyData(myJson)
-                    originalData = myJson
-                }
+                console.log("line 19:");
+                console.log(myJson);
+
+                    setMyData(myJson);
+                    originalData = myJson;
+
             })
     }, []);
 

@@ -14,11 +14,11 @@ const Add = ({navigation, route}) => {
           let myData = JSON.parse(route.params.datastr);
           let item = {name:name};
           myData.push(item);
-          fetch("https://jsonhost.com/json/b1b17a7b4ace82611b0e47da6dc8d0e9", {
+          fetch("https://jsonhost.com/json/3c8ea95bb0f0a27afaf17496650efb56", {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
-                  "Authorization": "roopilriikdavb3xxlxyaak1iqkz5xg2"
+                  "Authorization": "kddwvpe1w2xsy7rcx9c36voreuoqszwh"
               },
               body: JSON.stringify(myData)
           })
